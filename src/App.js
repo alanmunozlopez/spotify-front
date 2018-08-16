@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Search from './components/Search';
+import Search from './components/search/Search';
+import Albums from './components/albums/Albums';
 
 class App extends Component {
 
@@ -10,13 +11,6 @@ class App extends Component {
     albumInput: '',
     albums: null,
   }
-
-  // componentDidMount() {
-  //   console.log("say hello");
-  //   fetch('http://localhost:3300/api/search/scorpion')
-  //   .then(response => response.json())
-  //     .then(data => console.log(data));
-  // }
 
   updateAlbumInput = (event) => {
     this.setState({
@@ -38,10 +32,11 @@ class App extends Component {
     console.log(`this is the album to search: ${album}`);
     fetch(`http://localhost:3300/api/search/${album}`)
     .then(response => response.json())
-      .then(albums => { 
-        this.setState({ albums });
-        console.log(albums);
-      });
+      .then(data => data.albums.items)
+        .then(albums => { 
+          console.log(albums);
+          this.setState({ albums });
+        });
   }
 
   render() {
@@ -59,9 +54,9 @@ class App extends Component {
         />
         {
           this.state.albums
-          ? <div>
-              <h1> Resultados here ! </h1>
-            </div>
+          ? <Albums
+            albums={this.state.albums}
+          />
           : null
         }
       </div>
