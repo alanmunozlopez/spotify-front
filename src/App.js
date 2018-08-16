@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Header from './components/header/Header';
 import Search from './components/search/Search';
 import Albums from './components/albums/Albums';
 
@@ -46,23 +46,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Search
-          albumInput={this.state.albumInput}
-          updateAlbumInput={this.updateAlbumInput}
-          pressEnter={this._handleKeyPress}
-          handleSearchAlbum={this.handleSearchAlbum}
-        />
-        {
-          this.state.albums
-          ? <Albums
-            albums={this.state.albums}
+        <Header />
+        <div className="App-body">
+          <Search
+            albumInput={this.state.albumInput}
+            updateAlbumInput={this.updateAlbumInput}
+            pressEnter={this._handleKeyPress}
+            handleSearchAlbum={this.handleSearchAlbum}
           />
-          : null
-        }
+          {
+            this.state.albums
+            ? <Albums
+              albums={this.state.albums}
+            />
+            : null
+          }
+        </div>
       </div>
     );
   }
