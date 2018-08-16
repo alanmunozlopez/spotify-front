@@ -1,0 +1,7 @@
+.Search {
+  display: grid;
+  grid-template-columns: 300px 150px;
+  grid-gap: 8px;
+  justify-content: center;
+  margin-top: 32px;
+}
