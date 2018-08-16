@@ -11,6 +11,7 @@ const Albums = (props) => (
         return <Album
           key={item.id}
           {...item}
+          handleAlbumClick={props.handleAlbumClick}
         />
       })
     }

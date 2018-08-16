@@ -6,15 +6,18 @@ const Search = (props) => (
     <input
       id="search"
       type="text"
-      name="search"
-      placeholder="Ingresa el nombre de album"
+      required="required"
+      placeholder="¿Que álbum deseas?"
       value={props.albumInput}
       onChange={props.updateAlbumInput}
       onKeyPress={props.pressEnter}
     />
+    <div>
     <button
+      className="Search-button"
       onClick={() => { props.handleSearchAlbum() }}
-    > Buscar </button>
+      > Buscar </button>
+    </div>
   </div> 
 );
 

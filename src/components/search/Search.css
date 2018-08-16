@@ -1,7 +1,43 @@
 .Search {
   display: grid;
-  grid-template-columns: 300px 150px;
+  grid-template-columns: 300px 200px;
   grid-gap: 8px;
   justify-content: center;
   margin-top: 32px;
+}
+
+@media screen and (max-width: 520px) {
+  .Search {
+    grid-template-columns: 280px;
+  }
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #1ED760;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
 }

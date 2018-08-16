@@ -43,6 +43,12 @@ class App extends Component {
         .catch(error => console.log(`Error ${error}`));
   }
 
+  handleAlbumClick = (url) => {
+    console.log(url);
+    let win = window.open(url, '_blank');
+    win.focus();
+  }
+
   render() {
     return (
       <div className="App">
@@ -58,6 +64,7 @@ class App extends Component {
             this.state.albums
             ? <Albums
               albums={this.state.albums}
+              handleAlbumClick={this.handleAlbumClick}
             />
             : null
           }
