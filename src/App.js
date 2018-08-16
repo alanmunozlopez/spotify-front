@@ -8,6 +8,7 @@ class App extends Component {
 
   state = {
     albumInput: '',
+    albums: null,
   }
 
   // componentDidMount() {
@@ -37,7 +38,10 @@ class App extends Component {
     console.log(`this is the album to search: ${album}`);
     fetch(`http://localhost:3300/api/search/${album}`)
     .then(response => response.json())
-      .then(data => console.log(data));
+      .then(albums => { 
+        this.setState({ albums });
+        console.log(albums);
+      });
   }
 
   render() {
@@ -53,6 +57,13 @@ class App extends Component {
           pressEnter={this._handleKeyPress}
           handleSearchAlbum={this.handleSearchAlbum}
         />
+        {
+          this.state.albums
+          ? <div>
+              <h1> Resultados here ! </h1>
+            </div>
+          : null
+        }
       </div>
     );
   }
