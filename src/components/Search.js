@@ -1,10 +1,20 @@
 import React from 'react'
 import './Search.css';
 
-const Search = () => (
+const Search = (props) => (
   <div className="Search">
-    <input type="text" placeholder="Hola" />
-    <button> Hello </button>
+    <input
+      id="search"
+      type="text"
+      name="search"
+      placeholder="Ingresa un nombre de album"
+      value={props.albumInput}
+      onChange={props.updateAlbumInput}
+      onKeyPress={props.pressEnter}
+    />
+    <button
+      onClick={() => { props.handleSearchAlbum() }}
+    > Hello </button>
   </div> 
 );
 
