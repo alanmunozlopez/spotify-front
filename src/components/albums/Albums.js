@@ -1,11 +1,16 @@
 import React from 'react'
 
+import './Albums.css';
+import Album from './album/Album';
+
 const Albums = (props) => (
   <div className="Albums">
     {
       props.albums.map((item)=>{
         if (item === null) return null
-        return <h1 key={item.id}> {item.name} </h1>
+        return <Album
+          key={item.id}
+        />
       })
     }
   </div>
