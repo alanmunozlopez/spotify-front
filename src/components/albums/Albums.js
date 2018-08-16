@@ -10,6 +10,7 @@ const Albums = (props) => (
         if (item === null) return null
         return <Album
           key={item.id}
+          {...item}
         />
       })
     }
