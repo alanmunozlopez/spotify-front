@@ -28,15 +28,19 @@ class App extends Component {
   // Esta función es quien buscará el album
   handleSearchAlbum = () => {
     let album = this.state.albumInput;
+    if (album === '')
+      return;
     album = album.trim();
     console.log(`this is the album to search: ${album}`);
+    
     fetch(`http://localhost:3300/api/search/${album}`)
     .then(response => response.json())
       .then(data => data.albums.items)
         .then(albums => { 
           console.log(albums);
           this.setState({ albums });
-        });
+        })
+        .catch(error => console.log(`Error ${error}`));
   }
 
   render() {
