@@ -1,0 +1,29 @@
+
+.Loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9000;
+}
+
+.Loader-container {
+  display: grid;
+  height: 100vh;
+  justify-items: center;
+  align-items: center;
+}
+
+.Loader-logo {
+  animation: Header-logo-spin infinite .8s linear;
+  height: 50px;
+  width: 50px;
+}
+
+
+@keyframes Loader-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

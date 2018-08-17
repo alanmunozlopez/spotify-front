@@ -4,10 +4,12 @@ import './App.css';
 import Header from './components/header/Header';
 import Search from './components/search/Search';
 import Albums from './components/albums/Albums';
+import Loader from './components/loader/Loader';
 
 class App extends Component {
 
   state = {
+    isLoaderActive: false,
     albumInput: '',
     albums: null,
   }
@@ -30,6 +32,7 @@ class App extends Component {
     let album = this.state.albumInput;
     if (album === '')
       return;
+    this.setState({ isLoaderActive: true })
     album = album.trim();
     console.log(`this is the album to search: ${album}`);
     
@@ -39,8 +42,12 @@ class App extends Component {
         .then(albums => { 
           console.log(albums);
           this.setState({ albums });
+          this.setState({ isLoaderActive: false })
         })
-        .catch(error => console.log(`Error ${error}`));
+        .catch(error => {
+          console.log(`Error ${error}`)
+          this.setState({ isLoaderActive: false })
+        });
   }
 
   handleAlbumClick = (url) => {
@@ -53,6 +60,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        {
+          this.state.isLoaderActive
+          ? <Loader />
+          : null
+        }
         <div className="App-body">
           <Search
             albumInput={this.state.albumInput}
